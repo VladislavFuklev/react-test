@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.input {
+	border-radius: 5px;
+	font-size: 14px;
+	line-height: 20px;
+	border-color: transparent;
+	background-color: #21314c;
+	padding: 8px;
+	outline: none;
+	border-width: 1px;
+}
+
+.input:focus {
+	border-color: #4299e1;
+}
+.button {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	padding: 8px;
+	border-radius: 2px;
+	margin-right: 8px;
+}
+.pagination {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 10px;
+}
+
+.pagination > * {
+	margin-left: 5px;
+}
