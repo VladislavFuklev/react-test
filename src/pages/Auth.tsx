@@ -9,7 +9,8 @@ interface LoginFormInput {
 }
 
 export const Auth: FC = () => {
-	const { authenticated, setAuthenticated } = useAuth()
+	const { setUser, setAuthenticated } = useAuth()
+
 	const navigate = useNavigate()
 	const {
 		register,
@@ -17,8 +18,10 @@ export const Auth: FC = () => {
 		formState: { errors },
 	} = useForm<LoginFormInput>()
 
-	const onSubmit: SubmitHandler<LoginFormInput> = () => {
+	const onSubmit: SubmitHandler<LoginFormInput> = data => {
+		const { login, password } = data
 		setAuthenticated(true)
+		setUser({ username: login, password })
 		navigate('/')
 	}
 

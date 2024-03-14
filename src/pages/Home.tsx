@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { FC, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import Loader from '../components/Loader'
 import { ProductTable } from '../components/ProductTable'
 import useAuth from '../hooks/useAuth'
@@ -12,20 +11,19 @@ interface HomeState {
 }
 
 export const Home: FC = () => {
-	const { authenticated } = useAuth()
-	const navigate = useNavigate()
+	const { authenticated, user } = useAuth()
 	const [state, setState] = useState<HomeState>({
 		isLoading: false,
 		products: [],
 	})
 
 	useEffect(() => {
-		if (!authenticated) {
-			// navigate('/auth')
-		} else {
-			fetchProducts()
-		}
-	}, [authenticated])
+		console.log(user);
+		
+    if (authenticated) {
+        fetchProducts();
+    }
+}, [authenticated]);
 
 	const fetchProducts = async () => {
 		try {

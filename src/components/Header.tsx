@@ -1,14 +1,14 @@
 import { FC } from 'react'
 import { FaHome, FaSignOutAlt } from 'react-icons/fa'
-import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
 
 export const Header: FC = () => {
-	const { authenticated, setAuthenticated } = useAuth()
-	const navigate = useNavigate()
+	const { authenticated, setAuthenticated, setUser } = useAuth()
 
 	const handleAuth = () => {
 		setAuthenticated(false)
+		setUser({ username: '', password: '' })
 	}
 
 	return (
@@ -41,7 +41,9 @@ export const Header: FC = () => {
 				</button>
 			) : (
 				<button className='button bg-blue-900 ml-auto'>
-					<Link to={'/auth'}><span>Вхід</span></Link>
+					<Link to={'/auth'}>
+						<span>Вхід</span>
+					</Link>
 				</button>
 			)}
 		</header>
