@@ -32,7 +32,7 @@ export const ProductsDetail = () => {
 		fetchProduct()
 
 		return () => {}
-	}, [id, authenticated])
+	}, [id, authenticated, navigate])
 	return (
 		<div>
 			<Link to={'/'} className='text-blue-500 hover:underline'>
