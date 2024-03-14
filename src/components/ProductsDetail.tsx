@@ -1,14 +1,23 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import useAuth from '../hooks/useAuth'
 import { Product } from '../types/Product'
 import Loader from './Loader'
 
 export const ProductsDetail = () => {
+	const { authenticated } = useAuth()
+
 	const { id } = useParams()
 	const [details, setDetails] = useState<Product | null>(null)
 	const [isLoad, setIsload] = useState<boolean>(true)
+	const navigate = useNavigate()
+
 	useEffect(() => {
+		if (!authenticated) {
+			navigate('/auth')
+		}
+
 		const fetchProduct = async () => {
 			try {
 				const response = await axios.get<Product>(
@@ -23,7 +32,7 @@ export const ProductsDetail = () => {
 		fetchProduct()
 
 		return () => {}
-	}, [id])
+	}, [id, authenticated])
 	return (
 		<div>
 			<Link to={'/'} className='text-blue-500 hover:underline'>
