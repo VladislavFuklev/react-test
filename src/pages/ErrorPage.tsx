@@ -8,7 +8,7 @@ export const ErrorPage = () => {
 			<Link to={'/'}>
 				{' '}
 				<button className='btn flex gap-5 items-center bg-red-900 p-2 rounded mr-2'>
-					Back
+					Назад
 				</button>
 			</Link>
 		</div>

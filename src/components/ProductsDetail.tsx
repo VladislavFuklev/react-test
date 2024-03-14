@@ -11,7 +11,7 @@ export const ProductsDetail = () => {
 	useEffect(() => {
 		const fetchProduct = async () => {
 			try {
-				const response = await axios.get(
+				const response = await axios.get<Product>(
 					`https://fakestoreapi.com/products/${id}`
 				)
 				setDetails(response.data)
