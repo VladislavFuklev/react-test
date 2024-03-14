@@ -9,7 +9,6 @@ export const Header: FC = () => {
 
 	const handleAuth = () => {
 		setAuthenticated(false)
-		navigate('/')
 	}
 
 	return (
@@ -41,12 +40,9 @@ export const Header: FC = () => {
 					<FaSignOutAlt />
 				</button>
 			) : (
-				<Link
-					to={'/auth'}
-					className='py-2 text-white/50 hover:text-white ml-auto'
-				>
-					{''}
-				</Link>
+				<button className='button bg-blue-900 ml-auto'>
+					<Link to={'/auth'}><span>Вхід</span></Link>
+				</button>
 			)}
 		</header>
 	)
