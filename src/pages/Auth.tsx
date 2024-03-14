@@ -2,11 +2,8 @@ import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
+import { LoginFormInput } from '../types/LoginFormInput'
 
-interface LoginFormInput {
-	login: string
-	password: string
-}
 
 export const Auth: FC = () => {
 	const { setUser, setAuthenticated } = useAuth()
