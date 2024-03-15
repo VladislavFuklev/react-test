@@ -5,11 +5,9 @@ import Loader from '../components/Loader'
 import { ProductTable } from '../components/ProductTable'
 import useAuth from '../hooks/useAuth'
 import { Product } from '../types/Product'
+import { HomeState } from '../types/HomeState'
 
-interface HomeState {
-	isLoading: boolean
-	products: Product[]
-}
+
 
 export const Home: FC = () => {
 	const { authenticated } = useAuth()
