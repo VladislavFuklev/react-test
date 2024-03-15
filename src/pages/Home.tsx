@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { FC, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Loader from '../components/Loader'
 import { ProductTable } from '../components/ProductTable'
 import useAuth from '../hooks/useAuth'
@@ -11,19 +12,16 @@ interface HomeState {
 }
 
 export const Home: FC = () => {
-	const { authenticated, user } = useAuth()
+	const { authenticated } = useAuth()
+	const navigate = useNavigate()
 	const [state, setState] = useState<HomeState>({
 		isLoading: false,
 		products: [],
 	})
 
 	useEffect(() => {
-		console.log(user);
-		
-    if (authenticated) {
-        fetchProducts();
-    }
-}, [authenticated]);
+		authenticated ? fetchProducts() : navigate('/auth')
+	}, [])
 
 	const fetchProducts = async () => {
 		try {
@@ -39,17 +37,11 @@ export const Home: FC = () => {
 
 	return (
 		<div>
-			{state.isLoading ? (
+		{state.isLoading ? (
 				<Loader />
-			) : (
-				<>
-					{state.products.length > 0 || authenticated ? (
-						<ProductTable products={state.products} />
-					) : (
-						<p>Необходима авторизация</p>
-					)}
-				</>
-			)}
-		</div>
+		) : (
+				<ProductTable products={state.products} />
+		)}
+</div>
 	)
 }

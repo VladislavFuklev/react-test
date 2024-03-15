@@ -7,7 +7,6 @@ import { LoginFormInput } from '../types/LoginFormInput'
 
 export const Auth: FC = () => {
 	const { setUser, setAuthenticated } = useAuth()
-
 	const navigate = useNavigate()
 	const {
 		register,
@@ -23,7 +22,10 @@ export const Auth: FC = () => {
 	}
 
 	return (
+
+		
 		<div className='mt-40 flex flex-col justify-center items-center bg-slate-900 text-white'>
+
 			<h1 className='text-center text-xl mb-10'>Авторизація</h1>
 			<form
 				onSubmit={handleSubmit(onSubmit)}
@@ -47,7 +49,7 @@ export const Auth: FC = () => {
 				{errors.password && (
 					<span className='text-red-500'>Поле Пароль є обов'язковим</span>
 				)}
-				<button type='submit' className='button mx-auto bg-green-800'>
+				<button type='submit' className='button mx-auto bg-blue-900'>
 					Вхід
 				</button>
 			</form>
